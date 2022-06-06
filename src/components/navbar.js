@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-const pages = ['Login', 'Register'];
+const pages = ['Login', 'Register','Maps'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const darkTheme = createTheme({

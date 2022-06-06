@@ -20,7 +20,7 @@ const Home = () => {
 
     return (
         <>
-            <p>List of Users :</p>
+            <p>Users :</p>
             <Table header={['First Name','Last Name','Email']} data={getUsers}/>
         </>
     )

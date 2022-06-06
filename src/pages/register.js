@@ -10,13 +10,19 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Router, useNavigate } from 'react-router-dom';
 
 
 const theme = createTheme();
 
 export default function SignUp() {
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+
     const form = new FormData(event.currentTarget);
     
     const user = {
@@ -39,6 +45,7 @@ export default function SignUp() {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        navigate('/')
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -85,7 +92,6 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
-                  
                 />
               </Grid>
               <Grid item xs={12}>
@@ -96,7 +102,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="new-email"
-                  placeholder='Email'
+                  
                 />
               </Grid>
               <Grid item xs={12}>
@@ -108,7 +114,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  placeholder='Password'
+                  
                 />
               </Grid>
               {/* <Grid item xs={12}>
