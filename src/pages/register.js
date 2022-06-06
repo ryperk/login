@@ -17,13 +17,38 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const form = new FormData(event.currentTarget);
+    
+    const user = {
+      firstName: form.get('firstName'),
+      lastName: form.get('lastName'),
+      email: form.get('email'),
+      password: form.get('password'),
+    };
+
+    console.log("user", user)
+
+    // save data
+    fetch('http://localhost:3001/user/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    
   };
 
   return (
@@ -74,7 +99,7 @@ export default function SignUp() {
                   id="email"
                   label="Email Address"
                   name="email"
-                  autoComplete="email"
+                  autoComplete='off'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -85,7 +110,7 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete='off'
                 />
               </Grid>
               {/* <Grid item xs={12}>
@@ -113,7 +138,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-       
+
       </Container>
     </ThemeProvider>
   );
