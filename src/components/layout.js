@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { Outlet, Link } from "react-router-dom"
 import Navbar from "./navbar";
 
@@ -10,9 +10,11 @@ export default function Layout() {
             so you can think about this <Outlet> as a placeholder for
             the child routes we defined above. */}
             <Box sx={{
-                padding:1
+                
             }}>
-                <Outlet />
+                <Container maxWidth="full">
+                    <Outlet />
+                </Container>
             </Box>
         </div>
     );
